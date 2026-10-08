@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Dashboard</title>
+  <script>
+    (function() {
+      try {
+        if (localStorage.getItem('tld_theme') === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div id="theme-toggle-bar">
+    <button id="theme-toggle" type="button" aria-label="Switch to dark mode">🌙 Dark Mode</button>
+  </div>
+
+  <main class="dashboard-grid">
+
+    <!-- ===== Greeting Widget ===== -->
+    <section id="greeting-widget" aria-labelledby="greeting-heading">
+      <h2 id="greeting-heading">Hello</h2>
+      <p id="greeting-time" aria-live="polite" aria-label="Current time"></p>
+      <p id="greeting-date"></p>
+      <p id="greeting-message"></p>
+      <div id="greeting-name-form">
+        <label for="greeting-name-input" class="visually-hidden">Your name</label>
+        <input
+          id="greeting-name-input"
+          type="text"
+          maxlength="50"
+          placeholder="Enter your name…"
+          autocomplete="off"
+        >
+        <button id="greeting-name-submit" type="button">Save</button>
+        <button id="greeting-name-cancel" type="button" hidden>Cancel</button>
+        <p id="greeting-name-error" role="alert" hidden></p>
+      </div>
+      <button id="greeting-name-edit" type="button" hidden>✏️ Edit name</button>
+    </section>
+
+    <!-- ===== Focus Timer Widget ===== -->
+    <section id="focus-timer-widget" aria-labelledby="timer-heading">
+      <h2 id="timer-heading">Focus Timer</h2>
+      <p id="timer-display" aria-live="polite" aria-label="Remaining time">25:00</p>
+      <div id="timer-controls">
+        <button id="timer-start" type="button">Start</button>
+        <button id="timer-stop"  type="button" disabled>Stop</button>
+        <button id="timer-reset" type="button" disabled>Reset</button>
+      </div>
+      <div id="timer-notification" role="status" hidden>
+        <span>Session complete! Great work.</span>
+        <button id="timer-dismiss" type="button">Dismiss</button>
+      </div>
+    </section>
+
+    <!-- ===== To-Do List Widget ===== -->
+    <section id="todo-list-widget" aria-labelledby="todo-heading">
+      <h2 id="todo-heading">My Tasks</h2>
+      <form id="todo-form" novalidate>
+        <label for="todo-input" class="visually-hidden">New task description</label>
+        <input
+          id="todo-input"
+          type="text"
+          maxlength="500"
+          placeholder="Add a task…"
+          autocomplete="off"
+          aria-describedby="todo-error"
+        >
+        <button type="submit">Add</button>
+        <p id="todo-error" role="alert" hidden></p>
+      </form>
+      <ul id="todo-list" aria-label="Task list"></ul>
+    </section>
+
+    <!-- ===== Quick Links Widget ===== -->
+    <section id="quick-links-widget" aria-labelledby="links-heading">
+      <h2 id="links-heading">Quick Links</h2>
+      <form id="links-form" novalidate>
+        <label for="link-label" class="visually-hidden">Link label</label>
+        <input
+          id="link-label"
+          type="text"
+          maxlength="100"
+          placeholder="Label"
+          autocomplete="off"
+          aria-describedby="links-error"
+        >
+        <label for="link-url" class="visually-hidden">Link URL</label>
+        <input
+          id="link-url"
+          type="text"
+          placeholder="URL (e.g. https://example.com)"
+          autocomplete="off"
+          aria-describedby="links-error"
+        >
+        <button type="submit">Add</button>
+        <p id="links-error" role="alert" hidden></p>
+      </form>
+      <div id="links-list" aria-label="Quick links"></div>
+    </section>
+
+  </main>
+
+  <!-- Global storage quota error toast -->
+  <div id="storage-error-toast" role="alert" hidden></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

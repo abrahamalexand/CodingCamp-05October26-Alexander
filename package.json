@@ -1,0 +1,15 @@
+{
+  "name": "todo-life-dashboard",
+  "version": "1.0.0",
+  "description": "A client-side productivity dashboard with Greeting, Focus Timer, To-Do List, and Quick Links widgets.",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "fast-check": "3.22.0",
+    "jsdom": "^29.1.1",
+    "vitest": "2.1.9"
+  }
+}
